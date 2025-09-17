@@ -32,3 +32,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Desarrollo ###
+src/main/java/com/github/com/Pitcher755/projekto/init/DataInitializer.java
