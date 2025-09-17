@@ -3,6 +3,7 @@ package com.github.com.Pitcher755.projekto.security;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.github.com.Pitcher755.projekto.model.User;
 import com.github.com.Pitcher755.projekto.repository.UserRepository;
@@ -11,6 +12,7 @@ import com.github.com.Pitcher755.projekto.repository.UserRepository;
  * Servicio que carga UserDetails a partir de {@link UserRepository}.
  * Spring Security usará esta implementación para autenticar usuarios.
  */
+@Service
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
