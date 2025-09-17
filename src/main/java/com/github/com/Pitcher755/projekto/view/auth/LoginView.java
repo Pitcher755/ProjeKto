@@ -16,7 +16,7 @@ import com.vaadin.flow.router.Route;
  * - Spring Security redirige a la URL original tras autenticación.
  */
 @Route("login")
-@PageTitle("Login - Projekto")
+@PageTitle("Inicio de sesión - Projekto")
 @CssImport("./styles/shared-styles.css")
 public class LoginView extends VerticalLayout {
 
