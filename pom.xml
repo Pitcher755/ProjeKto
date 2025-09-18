@@ -5,43 +5,37 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- Spring Boot Parent (gestiona versiones y plugins de Spring Boot) -->
+	<!-- =========================
+         SPRING BOOT PARENT
+         (gestiona versiones y plugins)
+         ========================= -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.5</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath />
 	</parent>
 
-	<!-- Identificadores del proyecto -->
+	<!-- =========================
+         IDENTIFICADORES DEL PROYECTO
+         ========================= -->
 	<groupId>com.github.com.Pitcher755</groupId>
 	<artifactId>projekto</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ProjeKto</name>
 	<description>ProjeKto: gestiona proyectos en equipo con tableros Kanban, métricas de progreso y control de roles, todo en una interfaz simple y moderna con Vaadin.</description>
-	<url />
-	<licenses>
-		<license />
-	</licenses>
-	<developers>
-		<developer />
-	</developers>
-	<scm>
-		<connection />
-		<developerConnection />
-		<tag />
-		<url />
-	</scm>
 
-	<!-- Propiedades del proyecto -->
+	<!-- =========================
+         PROPIEDADES DEL PROYECTO
+         ========================= -->
 	<properties>
 		<java.version>17</java.version>
 		<vaadin.version>24.8.8</vaadin.version>
 	</properties>
 
-	<!-- ========================= 
-	 	 DEPENDENCIAS PRINCIPALES
-	 	 ========================= -->
+	<!-- =========================
+         DEPENDENCIAS PRINCIPALES
+         ========================= -->
 	<dependencies>
 
 		<!-- Spring Data JPA (persistencia con Hibernate) -->
@@ -50,28 +44,22 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<!-- Spring Security (gestion de usuarios y roles) -->
+		<!-- Spring Security (usuarios y roles) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
-		<!-- Spring Web (para REST APIs y Vaadin) -->
+		<!-- Spring Web (para REST APIs y soporte Vaadin) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- Vaadin (UI moderna en Java) -->
+		<!-- ✅ Vaadin Core (UI moderna, solo componentes gratuitos) -->
 		<dependency>
 			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-spring-boot-starter</artifactId>
-		</dependency>
-
-		<!-- Vaadin Charts (gráficas interactivas) -->
-		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-charts-flow</artifactId>
+			<artifactId>vaadin-core</artifactId>
 		</dependency>
 
 		<!-- Lombok (reduce código repetitivo en entidades y servicios) -->
@@ -95,8 +83,8 @@
 		</dependency>
 
 		<!-- =========================
-		 	 DEPENDENCIAS DE TEST
-		 	 ========================= -->
+             DEPENDENCIAS DE TEST
+             ========================= -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -109,7 +97,10 @@
 		</dependency>
 	</dependencies>
 
-	<!-- BOM de Vaadin para unificar versiones -->
+	<!-- =========================
+         BOM DE VAADIN
+         Unifica versiones
+         ========================= -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -122,23 +113,57 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<!-- Plugins de build -->
+	<!-- =========================
+         PLUGINS DE BUILD
+         ========================= -->
 	<build>
 		<plugins>
-			<!-- Spring Boot plugin para empaquetar la app -->
+			<!-- Spring Boot plugin (empaqueta la app como jar/war ejecutable) -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<!-- ✅ Plugin de Vaadin para desarrollo -->
+			<plugin>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-maven-plugin</artifactId>
+				<version>${vaadin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-frontend</goal>
+							<goal>build-frontend</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- Fuerza modo desarrollo -->
+					<productionMode>false</productionMode>
+					<!-- Ejecuta npm install automáticamente -->
+					<runNpmInstall>true</runNpmInstall>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
 	<!-- =========================
-	 	 PERFIL PARA PRODUCCIÓN
-	 	 ========================= -->
+         PERFIL DE PRODUCCIÓN
+         ========================= -->
 	<profiles>
 		<profile>
 			<id>production</id>
+			<properties>
+				<vaadin.productionMode>true</vaadin.productionMode>
+			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>com.vaadin</groupId>
@@ -150,7 +175,6 @@
 						</exclusion>
 					</exclusions>
 				</dependency>
-
 			</dependencies>
 			<build>
 				<plugins>
@@ -158,7 +182,7 @@
 					<plugin>
 						<groupId>com.vaadin</groupId>
 						<artifactId>vaadin-maven-plugin</artifactId>
-						<version>24.8.8</version>
+						<version>${vaadin.version}</version>
 						<executions>
 							<execution>
 								<id>frontend</id>
