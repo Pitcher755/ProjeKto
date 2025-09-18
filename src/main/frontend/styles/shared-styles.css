@@ -1,0 +1,264 @@
+/* ===============================
+   VARIABLES Y THEME PRINCIPAL
+   =============================== */
+:host {
+    /* Colores principales */
+    --projekto-primary: #2563eb;
+    /* Azul moderno */
+    --projekto-secondary: #10b981;
+    /* Verde éxito */
+    --projekto-accent: #f59e0b;
+    /* Ámbar atención */
+    --projekto-danger: #ef4444;
+    /* Rojo error */
+
+    /* Colores neutros */
+    --projekto-gray-50: #f9fafb;
+    --projekto-gray-100: #f3f4f6;
+    --projekto-gray-200: #e5e7eb;
+    --projekto-gray-300: #d1d5db;
+    --projekto-gray-400: #9ca3af;
+    --projekto-gray-500: #6b7280;
+    --projekto-gray-600: #4b5563;
+    --projekto-gray-700: #374151;
+    --projekto-gray-800: #1f2937;
+    --projekto-gray-900: #111827;
+
+    /* Tipografía */
+    --projekto-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --projekto-font-size-sm: 0.875rem;
+    --projekto-font-size-base: 1rem;
+    --projekto-font-size-lg: 1.125rem;
+    --projekto-font-size-xl: 1.25rem;
+    --projekto-font-size-2xl: 1.5rem;
+
+    /* Espaciado */
+    --projekto-spacing-xs: 0.25rem;
+    --projekto-spacing-sm: 0.5rem;
+    --projekto-spacing-md: 1rem;
+    --projekto-spacing-lg: 1.5rem;
+    --projekto-spacing-xl: 2rem;
+}
+
+/* ===============================
+   ESTILOS GLOBALES
+   =============================== */
+body {
+    font-family: var(--projekto-font-family);
+    background: linear-gradient(135deg, var(--projekto-gray-50) 0%, var(--projekto-gray-100) 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===============================
+   LAYOUT PRINCIPAL
+   =============================== */
+.main-layout {
+    min-height: 100vh;
+    padding: var(--projekto-spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===============================
+   COMPONENTES DE AUTENTICACIÓN
+   =============================== */
+.auth-container {
+    background: white;
+    border-radius: 12px;
+    padding: var(--projekto-spacing-xl);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: var(--projekto-spacing-xl) auto;
+    border: 1px solid var(--projekto-gray-200);
+}
+
+.auth-title {
+    text-align: center;
+    color: var(--projekto-gray-800);
+    margin-bottom: var(--projekto-spacing-lg);
+    font-size: var(--projekto-font-size-2xl);
+    font-weight: 600;
+}
+
+/* ===============================
+   BOTONES
+   =============================== */
+.btn-primary {
+    background: var(--projekto-primary);
+    border: none;
+    color: white;
+    padding: var(--projekto-spacing-sm) var(--projekto-spacing-lg);
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-secondary {
+    background: var(--projekto-gray-200);
+    border: none;
+    color: var(--projekto-gray-700);
+    padding: var(--projekto-spacing-sm) var(--projekto-spacing-lg);
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--projekto-gray-300);
+    transform: translateY(-1px);
+}
+
+/* ===============================
+   FORMULARIOS
+   =============================== */
+.form-group {
+    margin-bottom: var(--projekto-spacing-lg);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--projekto-spacing-xs);
+    color: var(--projekto-gray-700);
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: var(--projekto-spacing-sm);
+    border: 2px solid var(--projekto-gray-300);
+    border-radius: 8px;
+    font-size: var(--projekto-font-size-base);
+    transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--projekto-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ===============================
+   NAVEGACIÓN
+   =============================== */
+.navbar {
+    background: white;
+    padding: var(--projekto-spacing-md) var(--projekto-spacing-xl);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: var(--projekto-spacing-xl);
+}
+
+.nav-brand {
+    font-size: var(--projekto-font-size-xl);
+    font-weight: 700;
+    color: var(--projekto-primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--projekto-spacing-lg);
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--projekto-gray-600);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--projekto-primary);
+}
+
+/* ===============================
+   TARJETAS
+   =============================== */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: var(--projekto-spacing-lg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--projekto-gray-200);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ===============================
+   UTILIDADES
+   =============================== */
+.text-center {
+    text-align: center;
+}
+
+.text-primary {
+    color: var(--projekto-primary);
+}
+
+.text-secondary {
+    color: var(--projekto-gray-600);
+}
+
+.text-success {
+    color: var(--projekto-secondary);
+}
+
+.text-danger {
+    color: var(--projekto-danger);
+}
+
+.mt-1 {
+    margin-top: var(--projekto-spacing-sm);
+}
+
+.mt-2 {
+    margin-top: var(--projekto-spacing-md);
+}
+
+.mt-3 {
+    margin-top: var(--projekto-spacing-lg);
+}
+
+.mb-1 {
+    margin-bottom: var(--projekto-spacing-sm);
+}
+
+.mb-2 {
+    margin-bottom: var(--projekto-spacing-md);
+}
+
+.mb-3 {
+    margin-bottom: var(--projekto-spacing-lg);
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+@media (max-width: 768px) {
+    .main-layout {
+        padding: var(--projekto-spacing-md);
+    }
+
+    .auth-container {
+        margin: var(--projekto-spacing-md);
+        padding: var(--projekto-spacing-lg);
+    }
+
+    .navbar {
+        padding: var(--projekto-spacing-md);
+    }
+}

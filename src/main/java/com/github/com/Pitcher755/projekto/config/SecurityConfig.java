@@ -76,11 +76,14 @@ public class SecurityConfig {
         // Rutas públicas (login, register, h2 console, y recursos estáticos de Vaadin).
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers(
-                        "/login",
-                        "/register",
-                        "/h2-console/**",
-                        "/favivon.ico",
-                        "/VAADIN/**",
+                        "/",
+                        "/login", // ✅ Login público
+                        "/login/**", // ✅ Parámetros de login
+                        "/register", // ✅ Registro público
+                        "/register/**", // ✅ Parámetros de registro
+                        "/h2-console/**", // ✅ H2 console
+                        "/favicon.ico",
+                        "/VAADIN/**", // ✅ Recursos Vaadin
                         "/frontend/**",
                         "/frontend-es5/**",
                         "/sw.js",
@@ -95,10 +98,18 @@ public class SecurityConfig {
 
         // Usamos el login form de Spring Security (la vista /login la proveeremos con
         // Vaadin)
-        http.formLogin(form -> form.loginPage("/login").permitAll());
+        http.formLogin(form -> form
+                .loginPage("/login")
+                .loginProcessingUrl("/perform_login")
+                .defaultSuccessUrl("/", true)
+                .failureUrl("/login?error")
+                .permitAll());
 
         // Logout
-        http.logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login"));
+        http.logout(logout -> logout
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
+                .permitAll());
 
         return http.build();
     }
