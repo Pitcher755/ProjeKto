@@ -59,7 +59,7 @@
 		<!-- ✅ Vaadin Core (UI moderna, solo componentes gratuitos) -->
 		<dependency>
 			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-core</artifactId>
+			<artifactId>vaadin-spring-boot-starter</artifactId>
 		</dependency>
 
 		<!-- Lombok (reduce código repetitivo en entidades y servicios) -->
