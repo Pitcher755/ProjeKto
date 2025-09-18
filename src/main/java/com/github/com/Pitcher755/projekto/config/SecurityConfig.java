@@ -77,13 +77,13 @@ public class SecurityConfig {
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers(
                         "/",
-                        "/login", // ✅ Login público
-                        "/login/**", // ✅ Parámetros de login
-                        "/register", // ✅ Registro público
-                        "/register/**", // ✅ Parámetros de registro
-                        "/h2-console/**", // ✅ H2 console
+                        "/login",
+                        "/login/**",
+                        "/register",
+                        "/register/**",
+                        "/h2-console/**",
                         "/favicon.ico",
-                        "/VAADIN/**", // ✅ Recursos Vaadin
+                        "/VAADIN/**",
                         "/frontend/**",
                         "/frontend-es5/**",
                         "/sw.js",
@@ -93,8 +93,8 @@ public class SecurityConfig {
                         "/images/**",
                         "/styles/**")
                 .permitAll()
-                .anyRequest()
-                .authenticated());
+                .requestMatchers("/main").authenticated()
+                .anyRequest().authenticated());
 
         // Usamos el login form de Spring Security (la vista /login la proveeremos con
         // Vaadin)
