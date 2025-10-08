@@ -167,7 +167,7 @@
 			<dependencies>
 				<dependency>
 					<groupId>com.vaadin</groupId>
-					<artifactId>vaadin-core</artifactId>
+					<artifactId>vaadin-spring-boot-starter</artifactId>
 					<exclusions>
 						<exclusion>
 							<groupId>com.vaadin</groupId>
